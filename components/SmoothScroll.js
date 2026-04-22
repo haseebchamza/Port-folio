@@ -1,5 +1,6 @@
 "use client";
-import ReactLenis from "@studio-freight/react-lenis";
+import { ReactLenis } from "lenis/react";
+import 'lenis/dist/lenis.css';
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
