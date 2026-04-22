@@ -28,12 +28,15 @@ export default function Home() {
 
     // Dynamic horizontal spread to avoid overlap on mobile
     const [spread, setSpread] = useState(80); // Default vh/vw units
+    const [sceneScale, setSceneScale] = useState(0.7);
 
     useEffect(() => {
         setIsMounted(true);
         const handleResize = () => {
             // Increase spread on mobile to prevent projects/about from bleeding into hero
-            setSpread(window.innerWidth < 768 ? 140 : 80);
+            const isMobile = window.innerWidth < 768;
+            setSpread(isMobile ? 140 : 80);
+            setSceneScale(isMobile ? 0.45 : 0.7);
         };
         handleResize();
         window.addEventListener('resize', handleResize);
@@ -229,8 +232,8 @@ export default function Home() {
                             <span className="text-black/40 font-mono text-[10px] uppercase tracking-[0.6em] mb-4 drop-shadow-[0_2px_10px_rgba(0,0,0,0.05)]">Hi there, I&apos;m</span>
                             <h1 className="text-[12vw] md:text-[8vw] font-black tracking-[-0.05em] uppercase leading-[0.8] flex items-center gap-2 md:gap-4 drop-shadow-[0_10px_30px_rgba(0,0,0,0.1)] text-[#1a1a1a]">
                                 H
-                                <div className="w-[10vw] h-[10vw] md:w-[7vw] md:h-[7vw] relative mx-[-1vw]">
-                                    <Scene scale={0.7} />
+                                <div className="w-[8vw] h-[8vw] md:w-[7vw] md:h-[7vw] relative mx-[-1vw]">
+                                    <Scene scale={sceneScale} />
                                 </div>
                                 SEEB
                             </h1>
