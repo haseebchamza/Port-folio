@@ -60,6 +60,7 @@ function RevealScene({ isRevealed, onVideoEnd }: { isRevealed: boolean, onVideoE
                 <group position={[0, 5, 20]}>
                     <points>
                         <bufferGeometry>
+                            {/* @ts-ignore */}
                             <bufferAttribute
                                 attach="attributes-position"
                                 count={100}

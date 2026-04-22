@@ -1,5 +1,5 @@
 "use client";
-// Triggering fresh build with latest dependencies
+// Triggering fresh build with TS suppression
 import React, { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
