@@ -63,8 +63,7 @@ function RevealScene({ isRevealed, onVideoEnd }: { isRevealed: boolean, onVideoE
                             <bufferAttribute
                                 attach="attributes-position"
                                 count={100}
-                                array={new Float32Array(300).fill(0).map(() => (Math.random() - 0.5) * 50)}
-                                itemSize={3}
+                                args={[new Float32Array(300).fill(0).map(() => (Math.random() - 0.5) * 50), 3]}
                             />
                         </bufferGeometry>
                         <pointsMaterial size={0.5} color="white" transparent opacity={0.6} />
