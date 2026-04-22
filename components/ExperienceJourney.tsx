@@ -6,7 +6,7 @@ import Image from "next/image";
 // ── CONTENT DATA ──────────────────────────────────────────────────────────────
 
 const ABOUT_BIO =
-  "Visual & Product Designer with 6+ years of experience crafting user-centered digital solutions across real estate, fintech, and SaaS. Known for blending data-driven UX with strong visual execution — and increasingly, building my own tools using AI. Comfortable owning design end-to-end, from strategy to shipping.";
+  "Visual & Product Designer with 6+ years of experience crafting user-centered digital solutions across real estate, fintech, and SaaS. Known for blending data-driven UX with strong visual execution - and increasingly, building my own tools using AI. Comfortable owning design end-to-end, from strategy to shipping.";
 
 const JOBS = [
   {
@@ -14,8 +14,8 @@ const JOBS = [
     role: "UI/UX Designer",
     period: "Apr 2025 – Present",
     points: [
-      "Data-Driven Landing Page Design: Leveraged Hotjar heatmaps, session recordings, and user behaviour insights alongside real market data to design and optimize high-converting landing pages — achieving ~30% improvement in conversion rates.",
-      "Multi-Platform Digital Design: Designed end-to-end web experiences across Provident's ecosystem including off-plan property pages, developer profiles, area guides, and roadshow pages — ensuring brand consistency.",
+      "Data-Driven Landing Page Design: Leveraged Hotjar heatmaps, session recordings, and user behaviour insights alongside real market data to design and optimize high-converting landing pages - achieving ~30% improvement in conversion rates.",
+      "Multi-Platform Digital Design: Designed end-to-end web experiences across Provident's ecosystem including off-plan property pages, developer profiles, area guides, and roadshow pages - ensuring brand consistency.",
       "Real Estate Market-Informed UX: Translated real market insights and property data into intuitive, visually compelling layouts that effectively communicate off-plan developments.",
       "AI-Accelerated Design Workflow: Utilized Figma Make and other AI design tools to speed up production and iterate rapidly on campaign assets.",
     ],
@@ -97,16 +97,16 @@ function PagePhoto() {
       <RuledLines />
       <div className="relative z-10 flex flex-col items-center gap-3">
         {/* Photo polaroid */}
-        <div className="relative bg-white p-2 md:p-3 shadow-xl -rotate-2 border border-black/5" style={{ width: 180, height: 220 }}>
+        <div className="relative bg-white p-2 md:p-3 shadow-xl -rotate-2 border border-black/5 w-[140px] md:w-[180px] h-[180px] md:h-[220px]">
           <div className="relative w-full bg-black overflow-hidden shadow-inner" style={{ height: "82%" }}>
             <Image src="/Banner image.png" alt="Haseeb Hamza" fill className="object-cover grayscale contrast-110" />
             <div className="absolute inset-0 bg-yellow-400/10 mix-blend-overlay" />
           </div>
-          <div className="flex items-center justify-center font-mono text-[10px] md:text-xs italic text-black/40 tracking-widest uppercase font-bold" style={{ height: "18%" }}>
+          <div className="flex items-center justify-center font-mono text-[9px] md:text-xs italic text-black/40 tracking-widest uppercase font-bold" style={{ height: "18%" }}>
             Haseeb Hamza
           </div>
           {/* Tape */}
-          <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-6 bg-amber-100/70 -rotate-3 opacity-80" />
+          <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 md:w-12 h-4 md:h-6 bg-amber-100/70 -rotate-3 opacity-80" />
         </div>
       </div>
     </div>
@@ -115,19 +115,19 @@ function PagePhoto() {
 
 function PageBio() {
   return (
-    <div className="w-full h-full flex flex-col p-6 md:p-8 overflow-hidden relative justify-center">
+    <div className="w-full h-full flex flex-col p-5 md:p-8 overflow-hidden relative justify-center">
       <RuledLines />
-      <div className="relative z-10 flex flex-col gap-4 max-w-[260px]">
+      <div className="relative z-10 flex flex-col gap-3 md:gap-4 max-w-[240px] md:max-w-[260px]">
         <div className="border-b border-black/10 pb-2 mb-1">
           <span className="text-[7px] font-mono uppercase tracking-[0.4em] text-black/25">ABOUT ME</span>
         </div>
-        <h3 className="font-caveat text-xl font-black text-black/80 italic leading-tight">
+        <h3 className="font-caveat text-lg md:text-xl font-black text-black/80 italic leading-tight">
           Hi, I&apos;m Haseeb Hamza.
         </h3>
-        <p className="font-caveat text-[13px] md:text-[14px] text-black/60 leading-relaxed italic">{ABOUT_BIO}</p>
+        <p className="font-caveat text-[12px] md:text-[14px] text-black/60 leading-relaxed italic">{ABOUT_BIO}</p>
         <div className="flex flex-wrap gap-1.5 mt-2">
           {["UI/UX", "Product Design", "Visual Design", "Figma", "AI Tools", "Real Estate"].map(t => (
-            <span key={t} className="px-2 py-0.5 bg-black/5 rounded text-[8px] font-mono uppercase text-black/40 tracking-wider border border-black/5">
+            <span key={t} className="px-2 py-0.5 bg-black/5 rounded text-[7px] md:text-[8px] font-mono uppercase text-black/40 tracking-wider border border-black/5">
               {t}
             </span>
           ))}
@@ -143,20 +143,20 @@ function PageJob({ job }: { job: typeof JOBS[0] }) {
       <RuledLines />
       <div className="relative z-10 flex flex-col h-full">
         {/* Header */}
-        <div className="px-6 md:px-8 pt-6 pb-3 border-b border-black/10 shrink-0">
+        <div className="px-5 md:px-8 pt-5 md:pt-6 pb-2 md:pb-3 border-b border-black/10 shrink-0">
           <span className="text-[7px] font-mono uppercase tracking-[0.4em] text-black/25">{job.period}</span>
-          <h3 className="font-caveat text-[clamp(1.2rem,2.2vw,1.6rem)] font-black text-black/85 italic leading-tight mt-0.5">
+          <h3 className="font-caveat text-[clamp(1.1rem,4vw,1.6rem)] font-black text-black/85 italic leading-tight mt-0.5">
             {job.company}
           </h3>
-          <p className="font-caveat text-[11px] text-black/45 font-bold uppercase tracking-wide">— {job.role}</p>
+          <p className="font-caveat text-[10px] md:text-[11px] text-black/45 font-bold uppercase tracking-wide">- {job.role}</p>
         </div>
         {/* Bullets */}
-        <div className="flex-1 overflow-y-auto px-6 md:px-8 py-4" style={{ scrollbarWidth: "none" }}>
-          <ul className="space-y-3">
+        <div className="flex-1 overflow-y-auto px-5 md:px-8 py-3 md:py-4" style={{ scrollbarWidth: "none" }}>
+          <ul className="space-y-2 md:space-y-3">
             {job.points.map((pt, i) => (
               <li key={i} className="flex items-start gap-2">
                 <span className="w-1 h-1 rounded-full bg-black/30 mt-[6px] shrink-0" />
-                <p className="font-caveat text-[12px] md:text-[13px] text-black/60 italic leading-snug">{pt}</p>
+                <p className="font-caveat text-[11px] md:text-[13px] text-black/60 italic leading-snug">{pt}</p>
               </li>
             ))}
           </ul>
@@ -168,23 +168,23 @@ function PageJob({ job }: { job: typeof JOBS[0] }) {
 
 function PageCta() {
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center text-center p-8 relative overflow-hidden">
+    <div className="w-full h-full flex flex-col items-center justify-center text-center p-6 md:p-8 relative overflow-hidden">
       <RuledLines />
       <div className="absolute top-0 w-full h-2 bg-black/5" />
       <div className="absolute bottom-0 w-full h-2 bg-black/5" />
       
-      <div className="relative z-10 flex flex-col items-center gap-4">
+      <div className="relative z-10 flex flex-col items-center gap-3 md:gap-4">
         <span className="text-[7px] font-mono uppercase tracking-[0.5em] text-black/20 block">FINAL PAGE</span>
-        <h2 className="font-caveat text-[clamp(1.4rem,3vw,2.2rem)] font-black text-black/80 italic leading-tight uppercase tracking-tight">
+        <h2 className="font-caveat text-[clamp(1.2rem,5vw,2.2rem)] font-black text-black/80 italic leading-tight uppercase tracking-tight">
           LET’S BUILD THE<br />NEXT CHAPTER
         </h2>
-        <p className="font-caveat text-sm text-black/45 italic max-w-[200px] leading-relaxed">
+        <p className="font-caveat text-xs md:text-sm text-black/45 italic max-w-[180px] md:max-w-[200px] leading-relaxed">
           Great work starts with a conversation. Open to new opportunities.
         </p>
         <a
           href="mailto:haseebc1999@gmail.com"
           onClick={e => e.stopPropagation()}
-          className="mt-2 inline-flex items-center gap-2 px-5 py-2.5 bg-black text-white font-mono text-[8px] uppercase tracking-[0.25em] rounded-full hover:bg-black/80 transition-colors pointer-events-auto"
+          className="mt-2 inline-flex items-center gap-2 px-4 md:px-5 py-2 md:py-2.5 bg-black text-white font-mono text-[7px] md:text-[8px] uppercase tracking-[0.25em] rounded-full hover:bg-black/80 transition-colors pointer-events-auto"
         >
           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
@@ -217,12 +217,12 @@ const SHEETS = [
         className="absolute inset-0 flex flex-col items-center justify-center p-10 text-center shadow-[inset_10px_0_30px_rgba(0,0,0,0.5)] bg-[#1a1a1a]"
         style={{ backgroundImage: "url('/Book textures/cover_texture.jpg')", backgroundSize: "cover" }}
       >
-        <div className="w-full h-full border-2 border-black/20 rounded-sm flex flex-col items-center justify-center p-8 bg-black/10 shadow-inner">
-          <h2 className="text-3xl md:text-5xl font-black text-black/85 uppercase tracking-tighter italic leading-[0.85]">
+        <div className="w-full h-full border-2 border-black/20 rounded-sm flex flex-col items-center justify-center p-6 md:p-8 bg-black/10 shadow-inner">
+          <h2 className="text-2xl md:text-5xl font-black text-black/85 uppercase tracking-tighter italic leading-[0.85]">
             Experience<br />Archive
           </h2>
-          <p className="mt-4 text-black/40 text-[8px] md:text-[10px] font-mono tracking-[0.4em] uppercase font-bold">REGISTRY VOL. 01</p>
-          <div className="mt-4 w-8 h-0.5 bg-black/30" />
+          <p className="mt-3 md:mt-4 text-black/40 text-[8px] md:text-[10px] font-mono tracking-[0.4em] uppercase font-bold">REGISTRY VOL. 01</p>
+          <div className="mt-3 md:mt-4 w-6 md:w-8 h-0.5 bg-black/30" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent pointer-events-none" />
       </div>
@@ -265,7 +265,7 @@ export default function ExperienceJourney() {
   const prevFlip = () => setCurrentFlip(p => Math.max(p - 1, 0));
 
   return (
-    <div className="relative w-full h-full flex flex-col items-center justify-center select-none pointer-events-none pt-20">
+    <div className="relative w-full h-full flex flex-col items-center justify-center select-none pointer-events-none pt-12 md:pt-20">
       
       {/* Click outside to close */}
       {isOpen && (
@@ -275,7 +275,7 @@ export default function ExperienceJourney() {
         />
       )}
 
-      <div className="relative z-10 flex items-end gap-10 md:gap-14 pointer-events-none">
+      <div className="relative z-10 flex items-end gap-6 md:gap-14 pointer-events-none">
 
         {/* FOUNTAIN PEN moved to AFTER the book */}
         <motion.div
@@ -287,7 +287,7 @@ export default function ExperienceJourney() {
         >
           {/* Book bounding box (Right half of the spread initially, expands to full spread) */}
           <motion.div
-            className="relative w-[85vw] md:w-[45vw] max-w-[380px] h-[75vh] md:h-[65vh] max-h-[550px]"
+            className="relative w-[75vw] md:w-[45vw] max-w-[280px] md:max-w-[380px] h-[60vh] md:h-[65vh] max-h-[550px]"
           >
 
             {/* ── BASE RIGHT COVER (The Back of the Book) ── */}

@@ -49,7 +49,7 @@ export default function ProjectDetail() {
                         className="fixed inset-0 z-[200] flex items-center justify-center bg-[#f4f1ea] pointer-events-none"
                     >
                         {/* Folder graphic */}
-                        <div className="relative flex flex-col items-center select-none">
+                        <div className="relative flex flex-col items-center select-none scale-75 md:scale-100">
 
                             {/* Folder tab */}
                             <motion.div
@@ -59,7 +59,7 @@ export default function ProjectDetail() {
                                 className="w-32 h-8 bg-[#e0dbcf] rounded-t-lg border border-black/10 self-start ml-6"
                             />
 
-                            {/* Folder body — the "cover" lifts open */}
+                            {/* Folder body - the "cover" lifts open */}
                             <div className="relative w-[240px] h-[180px]">
                                 {/* Back of folder (always visible) */}
                                 <div
@@ -67,7 +67,7 @@ export default function ProjectDetail() {
                                     style={{ boxShadow: "0 10px 40px rgba(0,0,0,0.12)" }}
                                 />
 
-                                {/* Front cover — rotates open around the top edge */}
+                                {/* Front cover - rotates open around the top edge */}
                                 <motion.div
                                     initial={{ rotateX: 0, transformOrigin: "top center" }}
                                     animate={{
@@ -95,7 +95,7 @@ export default function ProjectDetail() {
                                     </div>
                                 </motion.div>
 
-                                {/* Sheets inside folder — appear as cover opens */}
+                                {/* Sheets inside folder - appear as cover opens */}
                                 <motion.div
                                     initial={{ opacity: 0, y: 4 }}
                                     animate={{ opacity: phase === "fading" ? 1 : 0, y: phase === "fading" ? 0 : 4 }}
@@ -146,7 +146,8 @@ export default function ProjectDetail() {
                         <span className="w-8 h-8 rounded-full border border-black/20 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all duration-500">
                             ←
                         </span>
-                        <span>Back to Workbench</span>
+                        <span className="hidden sm:inline">Back to Workbench</span>
+                        <span className="sm:hidden">Back</span>
                     </Link>
                     <div className="hidden md:block">
                         <span className="text-[10px] uppercase tracking-[0.4em] font-bold opacity-30">
@@ -156,12 +157,12 @@ export default function ProjectDetail() {
                 </nav>
 
                 {/* HERO */}
-                <header className="relative w-full h-[65vh] md:h-[80vh] overflow-hidden pt-28 px-6 md:px-10">
+                <header className="relative w-full h-[55vh] md:h-[80vh] overflow-hidden pt-24 md:pt-28 px-4 md:px-10">
                     <motion.div
                         initial={{ y: 40, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.1, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-                        className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl"
+                        className="relative w-full h-full rounded-xl md:rounded-2xl overflow-hidden shadow-2xl"
                     >
                         <Image
                             src={project.img}
@@ -170,19 +171,19 @@ export default function ProjectDetail() {
                             priority
                             className="object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
 
-                        <div className="absolute bottom-8 left-8 md:bottom-14 md:left-14">
+                        <div className="absolute bottom-6 left-6 md:bottom-14 md:left-14">
                             <motion.h1
                                 initial={{ x: -16, opacity: 0 }}
                                 animate={{ x: 0, opacity: 1 }}
                                 transition={{ delay: 0.25, duration: 0.7 }}
-                                className="text-4xl md:text-6xl font-black uppercase tracking-tight leading-none text-white drop-shadow-xl"
+                                className="text-3xl md:text-6xl font-black uppercase tracking-tight leading-none text-white drop-shadow-xl"
                             >
                                 {project.title}
                             </motion.h1>
                             <div className="mt-3 flex gap-3">
-                                <span className="px-4 py-1.5 border border-white/30 rounded-full text-[10px] uppercase font-bold text-white/80 backdrop-blur-md">
+                                <span className="px-4 py-1.5 border border-white/30 rounded-full text-[9px] md:text-[10px] uppercase font-bold text-white/80 backdrop-blur-md">
                                     {project.category}
                                 </span>
                             </div>
@@ -191,30 +192,30 @@ export default function ProjectDetail() {
                 </header>
 
                 {/* CONTENT GRID */}
-                <section className="max-w-[1400px] mx-auto mt-20 px-6 md:px-10">
-                    <div className="flex flex-col md:flex-row gap-20">
+                <section className="max-w-[1400px] mx-auto mt-12 md:mt-20 px-6 md:px-10">
+                    <div className="flex flex-col md:flex-row gap-12 md:gap-20">
 
                         {/* LEFT: Sticky Metadata */}
-                        <aside className="md:w-1/3 md:sticky md:top-32 h-fit flex flex-col gap-10">
-                            <div className="flex flex-col gap-3 border-l-2 border-black/5 pl-8">
+                        <aside className="md:w-1/3 md:sticky md:top-32 h-fit flex flex-col gap-8 md:gap-10">
+                            <div className="flex flex-col gap-2 border-l-2 border-black/5 pl-6 md:pl-8">
                                 <span className="text-[10px] uppercase tracking-[0.2em] font-black opacity-30">Role</span>
-                                <p className="text-xl font-bold uppercase leading-none">Design Engineer</p>
+                                <p className="text-lg md:text-xl font-bold uppercase leading-none">Design Engineer</p>
                             </div>
-                            <div className="flex flex-col gap-3 border-l-2 border-black/5 pl-8">
+                            <div className="flex flex-col gap-2 border-l-2 border-black/5 pl-6 md:pl-8">
                                 <span className="text-[10px] uppercase tracking-[0.2em] font-black opacity-30">Stack</span>
                                 <div className="flex flex-wrap gap-2">
                                     {(project as any).tech?.map((t: string) => (
-                                        <span key={t} className="px-3 py-1 bg-black/5 rounded text-[11px] font-bold uppercase">{t}</span>
+                                        <span key={t} className="px-3 py-1 bg-black/5 rounded text-[10px] md:text-[11px] font-bold uppercase">{t}</span>
                                     ))}
                                 </div>
                             </div>
-                            <div className="flex flex-col gap-3 border-l-2 border-black/5 pl-8">
+                            <div className="flex flex-col gap-2 border-l-2 border-black/5 pl-6 md:pl-8">
                                 <span className="text-[10px] uppercase tracking-[0.2em] font-black opacity-30">Metrics</span>
-                                <div className="grid grid-cols-2 gap-4">
+                                <div className="grid grid-cols-2 gap-4 md:gap-6">
                                     {Object.entries((project as any).stats || {}).map(([key, val]) => (
                                         <div key={key}>
-                                            <p className="text-2xl font-black">{val as string}</p>
-                                            <p className="text-[9px] uppercase font-bold opacity-40">{key.replace(/_/g, ' ')}</p>
+                                            <p className="text-xl md:text-2xl font-black">{val as string}</p>
+                                            <p className="text-[8px] md:text-[9px] uppercase font-bold opacity-40">{key.replace(/_/g, ' ')}</p>
                                         </div>
                                     ))}
                                 </div>
@@ -222,44 +223,44 @@ export default function ProjectDetail() {
                         </aside>
 
                         {/* RIGHT: Narrative */}
-                        <div className="md:w-2/3 flex flex-col gap-24">
+                        <div className="md:w-2/3 flex flex-col gap-16 md:gap-24">
                             <article>
-                                <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight mb-8">
+                                <h2 className="text-2xl md:text-4xl font-black uppercase tracking-tight mb-6 md:mb-8">
                                     Concept &amp; Execution
                                 </h2>
-                                <p className="text-xl md:text-3xl leading-snug text-black/80 font-medium">
+                                <p className="text-lg md:text-3xl leading-snug text-black/80 font-medium">
                                     {(project as any).overview}
                                 </p>
                             </article>
 
                             {/* CHALLENGE */}
-                            <div className="flex flex-col md:flex-row gap-10 border-t border-black/10 pt-16">
-                                <h3 className="md:w-1/3 text-[10px] uppercase font-black tracking-[0.4em] text-black/30 shrink-0">
+                            <div className="flex flex-col md:flex-row gap-6 md:gap-10 border-t border-black/10 pt-12 md:pt-16">
+                                <h3 className="md:w-1/3 text-[9px] md:text-[10px] uppercase font-black tracking-[0.4em] text-black/30 shrink-0">
                                     The Challenge
                                 </h3>
-                                <p className="md:w-2/3 text-xl md:text-2xl font-bold leading-snug">
+                                <p className="md:w-2/3 text-lg md:text-2xl font-bold leading-snug">
                                     {(project as any).challenge}
                                 </p>
                             </div>
 
                             {/* STRATEGY */}
-                            <div className="flex flex-col md:flex-row gap-10 border-t border-black/10 pt-16">
-                                <h3 className="md:w-1/3 text-[10px] uppercase font-black tracking-[0.4em] text-[#00c878] shrink-0">
+                            <div className="flex flex-col md:flex-row gap-6 md:gap-10 border-t border-black/10 pt-12 md:pt-16">
+                                <h3 className="md:w-1/3 text-[9px] md:text-[10px] uppercase font-black tracking-[0.4em] text-[#00c878] shrink-0">
                                     The Strategy
                                 </h3>
-                                <p className="md:w-2/3 text-xl md:text-2xl font-bold leading-snug">
+                                <p className="md:w-2/3 text-lg md:text-2xl font-bold leading-snug">
                                     {(project as any).solution}
                                 </p>
                             </div>
 
                             {/* BEHANCE LINK */}
                             {(project as any).behance && (
-                                <div className="mt-8">
+                                <div className="mt-4 md:mt-8">
                                     <a 
                                         href={(project as any).behance} 
                                         target="_blank" 
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-3 px-8 py-4 bg-black text-white font-bold uppercase tracking-widest text-sm rounded-full hover:scale-105 transition-transform"
+                                        className="inline-flex items-center gap-3 px-6 md:px-8 py-3.5 md:py-4 bg-black text-white font-bold uppercase tracking-widest text-[12px] md:text-sm rounded-full hover:scale-105 transition-transform"
                                     >
                                         View Full Case Study on Behance
                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -274,26 +275,26 @@ export default function ProjectDetail() {
                 </section>
 
                 {/* CYBER HUD DECORATION */}
-                <div className="fixed bottom-10 right-10 pointer-events-none opacity-20">
-                    <p className="text-[10px] font-mono whitespace-pre text-black">
+                <div className="fixed bottom-6 right-6 md:bottom-10 md:right-10 pointer-events-none opacity-20 hidden sm:block">
+                    <p className="text-[9px] md:text-[10px] font-mono whitespace-pre text-black text-right">
                         {`POS_X: 124.5\nPOS_Y: -80.2\nZOOM_LVL: 1.25\nREND_STAT: OPTIMIZED`}
                     </p>
                 </div>
 
                 {/* FOOTER */}
-                <footer className="mt-40 border-t border-black/5 py-20 px-10 text-center flex flex-col items-center">
+                <footer className="mt-24 md:mt-40 border-t border-black/5 py-16 md:py-20 px-6 md:px-10 text-center flex flex-col items-center">
                     <Link
                         href={`/project/${nextProject.id}`}
-                        className="text-[10vw] font-black uppercase tracking-tighter text-black/10 hover:text-black transition-colors duration-500"
+                        className="text-4xl md:text-[10vw] font-black uppercase tracking-tighter text-black/10 hover:text-black transition-colors duration-500 leading-none"
                     >
                         Next_Project
                     </Link>
-                    <p className="mt-4 text-[10px] uppercase tracking-[0.5em] font-bold opacity-30">
+                    <p className="mt-4 text-[9px] md:text-[10px] uppercase tracking-[0.5em] font-bold opacity-30">
                         Continue to {nextProject.title}
                     </p>
                     <Link
                         href="/"
-                        className="mt-12 px-6 py-2 border border-black/10 rounded-full text-[9px] uppercase font-bold tracking-widest hover:bg-black hover:text-white transition-colors"
+                        className="mt-12 px-6 py-2.5 border border-black/10 rounded-full text-[8px] md:text-[9px] uppercase font-bold tracking-widest hover:bg-black hover:text-white transition-colors"
                     >
                         Return to Home
                     </Link>

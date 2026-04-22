@@ -26,7 +26,19 @@ export default function Home() {
     const [showNudge, setShowNudge] = useState(false);
     const nudgeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-    useEffect(() => { setIsMounted(true); }, []);
+    // Dynamic horizontal spread to avoid overlap on mobile
+    const [spread, setSpread] = useState(80); // Default vh/vw units
+
+    useEffect(() => {
+        setIsMounted(true);
+        const handleResize = () => {
+            // Increase spread on mobile to prevent projects/about from bleeding into hero
+            setSpread(window.innerWidth < 768 ? 140 : 80);
+        };
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     // Establish initial GSAP transform (rotateX tilt) after mount
     useEffect(() => {
@@ -51,15 +63,17 @@ export default function Home() {
 
     // Nav camera panning via GSAP (animates the panningRef)
     useEffect(() => {
-        const LANDMARKS: Record<string, { x: number; y: number }> = {
-            intro: { x: 0, y: 0 },
-            projects: { x: 50, y: 0 },
-            about: { x: -50, y: 0 },
-        };
-
         const handlePan = (e: Event) => {
             window.dispatchEvent(new CustomEvent('cancelCinematicReveal'));
             const id = (e as CustomEvent).detail.id as string;
+            
+            // Re-calculate landmarks based on current spread
+            const LANDMARKS: Record<string, { x: number; y: number }> = {
+                intro: { x: 0, y: 0 },
+                projects: { x: spread, y: 0 },
+                about: { x: -spread, y: 0 },
+            };
+
             const target = LANDMARKS[id];
             if (!panningRef.current || !target) return;
 
@@ -77,7 +91,7 @@ export default function Home() {
 
         window.addEventListener("panToLandmark", handlePan);
         return () => window.removeEventListener("panToLandmark", handlePan);
-    }, []);
+    }, [spread]);
 
     // Native priority listener for Hero button to bypass global drag
     const heroBtnRef = useRef<HTMLButtonElement>(null);
@@ -98,7 +112,7 @@ export default function Home() {
         const world = worldRef.current;
         if (!world) return;
 
-        const MAX_X = window.innerWidth * 0.8;
+        const MAX_X = window.innerWidth * 1.5; // Increased for mobile spread
         const MAX_Y = window.innerHeight * 0.4;
 
         let startX = 0, startY = 0;
@@ -119,8 +133,13 @@ export default function Home() {
         const onPointerMove = (e: PointerEvent) => {
             if (!isDragging || !panningRef.current) return;
             e.preventDefault();
-            const rawX = originX + (e.clientX - startX);
-            const rawY = originY + (e.clientY - startY);
+            
+            // Increase sensitivity for touch devices for a snappier feel
+            const multiplier = e.pointerType === 'touch' ? 1.6 : 1;
+            
+            const rawX = originX + (e.clientX - startX) * multiplier;
+            const rawY = originY + (e.clientY - startY) * multiplier;
+            
             panX.current = Math.max(-MAX_X, Math.min(MAX_X, rawX));
             panY.current = Math.max(-MAX_Y, Math.min(MAX_Y, rawY));
             gsap.set(panningRef.current, { x: panX.current, y: panY.current, rotateX: 12 });
@@ -231,23 +250,23 @@ export default function Home() {
                             <div className="absolute -top-20 left-1/2 -translate-x-1/2 flex gap-12 pointer-events-none w-max">
                                 <div className="pointer-events-auto">
                                     <a href="https://www.figma.com/community/plugin/1574496757447320798/themeseed?q_id=c43ada91-b6e7-4404-b09d-11d580ee3a44" target="_blank" rel="noopener noreferrer">
-                                        <motion.img src="/themeseed.png" alt="Themeseed" className="w-20 h-auto drop-shadow-lg rotate-[-12deg] hover:scale-110 transition-transform" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.5 }} />
+                                        <motion.img src="/themeseed.png" alt="Themeseed" className="w-14 md:w-20 h-auto drop-shadow-lg rotate-[-12deg] hover:scale-110 transition-transform" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.5 }} />
                                     </a>
                                 </div>
                                 <div className="pointer-events-auto">
                                     <a href="https://www.figma.com/community/widget/1464673927630363022/bingo?q_id=1e6e29c4-195f-451d-9a03-9c541455be54" target="_blank" rel="noopener noreferrer">
-                                        <motion.img src="/Bingo.png" alt="Bingo" className="w-20 h-auto drop-shadow-lg rotate-[15deg] hover:scale-110 transition-transform" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.7 }} />
+                                        <motion.img src="/Bingo.png" alt="Bingo" className="w-14 md:w-20 h-auto drop-shadow-lg rotate-[15deg] hover:scale-110 transition-transform" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.7 }} />
                                     </a>
                                 </div>
                             </div>
                         </motion.div>
                     </section>
 
-                    <div id="projects" className="absolute left-[-50vw] w-screen h-screen flex items-center justify-center z-20">
+                    <div id="projects" className="absolute w-screen h-screen flex items-center justify-center z-20" style={{ left: `-${spread}vw` }}>
                         <WorkSection onProjectOpen={handleProjectClick} />
                     </div>
 
-                    <section id="about" className="absolute left-[50vw] w-screen h-screen flex items-center justify-center z-20">
+                    <section id="about" className="absolute w-screen h-screen flex items-center justify-center z-20" style={{ left: `${spread}vw` }}>
                         <ExperienceJourney />
                     </section>
 

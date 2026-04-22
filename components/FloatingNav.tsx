@@ -74,38 +74,38 @@ export default function FloatingNav() {
                         <button
                             onClick={() => panTo("intro")}
                             aria-label="Home"
-                            className="w-16 h-16 relative flex items-center justify-center border-r border-white/10 hover:bg-white/5 transition-colors shrink-0 overflow-hidden"
+                            className="w-12 h-12 md:w-16 md:h-16 relative flex items-center justify-center border-r border-white/10 hover:bg-white/5 transition-colors shrink-0 overflow-hidden"
                         >
-                            <div className="absolute inset-0 flex items-center justify-center scale-[0.5] translate-x-[8px] translate-y-[6px]">
+                            <div className="absolute inset-0 flex items-center justify-center scale-[0.4] md:scale-[0.5] translate-x-[6px] md:translate-x-[8px] translate-y-[4px] md:translate-y-[6px]">
                                 <Scene className="w-full h-full pointer-events-none" scale={1.2} />
                             </div>
                         </button>
 
                         {/* NAV LINKS */}
-                        <nav className="flex items-center px-8 gap-8 text-white/40 font-mono text-[10px] uppercase tracking-[0.4em]">
+                        <nav className="flex items-center px-4 md:px-8 gap-4 md:gap-8 text-white/40 font-mono text-[9px] md:text-[10px] uppercase tracking-[0.4em]">
                             <button
                                 onClick={() => panTo("projects")}
                                 onMouseEnter={playHoverSound}
-                                className="hover:text-white transition-colors py-5 relative group"
+                                className="hover:text-white transition-colors py-4 md:py-5 relative group"
                             >
                                 PROJECTS
-                                <span className="absolute bottom-3 left-0 w-full h-px bg-white scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+                                <span className="absolute bottom-2 md:bottom-3 left-0 w-full h-px bg-white scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
                             </button>
                             <button
                                 onClick={() => panTo("about")}
                                 onMouseEnter={playHoverSound}
-                                className="hover:text-white transition-colors py-5 relative group"
+                                className="hover:text-white transition-colors py-4 md:py-5 relative group"
                             >
                                 ABOUT
-                                <span className="absolute bottom-3 left-0 w-full h-px bg-white scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+                                <span className="absolute bottom-2 md:bottom-3 left-0 w-full h-px bg-white scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
                             </button>
                             <button
                                 onClick={() => window.dispatchEvent(new CustomEvent('triggerCinematicReveal'))}
                                 onMouseEnter={playHoverSound}
-                                className="hover:text-white transition-colors py-5 relative group"
+                                className="hover:text-white transition-colors py-4 md:py-5 relative group"
                             >
                                 CONTACT
-                                <span className="absolute bottom-3 left-0 w-full h-px bg-white scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+                                <span className="absolute bottom-2 md:bottom-3 left-0 w-full h-px bg-white scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
                             </button>
                         </nav>
 
@@ -113,7 +113,7 @@ export default function FloatingNav() {
                         <button
                             onClick={toggleAudio}
                             aria-label="Toggle audio"
-                            className="w-16 h-16 flex items-center justify-center border-l border-white/10 hover:bg-white/5 transition-colors shrink-0"
+                            className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center border-l border-white/10 hover:bg-white/5 transition-colors shrink-0"
                         >
                             <style>{`
                                 @keyframes eq1 { 0%,100%{height:4px;y:6px} 50%{height:12px;y:2px} }

@@ -26,7 +26,7 @@ export const PROJECTS = [
         img: "/Project Thumbnails/haladin.png",
         x: 260, y: -120, rotate: 8, z: 20,
         overview: "A premium lifestyle app bridging curated local experiences with an elegant, swipe-first mobile interface.",
-        challenge: "Make discovery feel effortless — reducing the average time-to-booking from 8 minutes to under 90 seconds.",
+        challenge: "Make discovery feel effortless - reducing the average time-to-booking from 8 minutes to under 90 seconds.",
         solution: "Introduced a gesture-driven content grid, contextual micro-animations, and a smart geo-personalisation engine.",
         tech: ["React Native", "Expo", "Supabase", "Mapbox"],
         stats: { Retention: "+52%", Booking_Time: "88s", Rating: "4.9★", Downloads: "50K" },
@@ -131,8 +131,9 @@ function ProjectFolder({ project, index, onOpen }: { project: any, index: number
         };
         const onMove = (e: PointerEvent) => {
             if (!isDown) return;
-            const dx = e.clientX - startX;
-            const dy = e.clientY - startY;
+            const multiplier = e.pointerType === 'touch' ? 1.5 : 1;
+            const dx = (e.clientX - startX) * multiplier;
+            const dy = (e.clientY - startY) * multiplier;
             if (Math.abs(dx) > 3 || Math.abs(dy) > 3) dragged = true;
             localX.current = originX + dx;
             localY.current = originY + dy;

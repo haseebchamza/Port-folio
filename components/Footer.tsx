@@ -13,7 +13,7 @@ export default function Footer() {
             {/* COPYRIGHT FOOTER */}
             <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-full max-w-7xl px-10 flex flex-col md:flex-row items-center justify-between gap-4">
                 <p className="text-[10px] text-white/20 font-mono uppercase tracking-[0.3em]">
-                    © 2026 HSBLABS.SITE — All rights reserved
+                    © 2026 HSBLABS.SITE - All rights reserved
                 </p>
                 <div className="flex items-center gap-6">
                     <p className="text-[10px] text-white/20 font-mono uppercase tracking-[0.3em]">
