@@ -70,7 +70,7 @@ export default function DeskClutter() {
         initial={{ opacity: 0, rotate: -20, scale: 0.8 }}
         animate={{ opacity: 1, rotate: -15, scale: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
-        className="absolute top-[8%] left-[25%] w-72 h-72 opacity-80"
+        className="absolute top-[5%] md:top-[8%] left-[10%] md:left-[25%] w-40 h-40 md:w-72 md:h-72 opacity-80"
       >
         <img 
           src="/designer_glasses_topdown_1775801851005.png" 
@@ -79,24 +79,20 @@ export default function DeskClutter() {
         />
       </motion.div>
 
-
-
-
       {/* Fountain Pen (Replaced Coffee Cup) */}
       <motion.div 
         initial={{ opacity: 0, scale: 0.7, rotate: 15 }}
         animate={{ opacity: 1, scale: 1, rotate: 25 }}
         transition={{ delay: 1.8, duration: 1.2, ease: "easeOut" }}
-        className="absolute top-[65%] right-[20%] w-[380px] h-[380px] z-20 pointer-events-none select-none"
+        className="absolute top-[70%] md:top-[65%] right-[10%] md:right-[20%] w-56 h-56 md:w-[380px] md:h-[380px] z-20 pointer-events-none select-none"
       >
         <img 
           src="/fountain_pen_topdown_1775801960943.png" 
           alt="Fountain pen" 
-          className="w-full h-full object-contain filter cursor-pointer"
+          className="w-full h-full object-contain filter"
           style={{ filter: "brightness(1.2) contrast(1.5) saturate(0.8)" }}
         />
       </motion.div>
     </div>
   );
-}
 
