@@ -95,4 +95,5 @@ export default function DeskClutter() {
       </motion.div>
     </div>
   );
+}
 
