@@ -36,7 +36,7 @@ export default function Home() {
             // Increase spread on mobile to prevent projects/about from bleeding into hero
             const isMobile = window.innerWidth < 768;
             setSpread(isMobile ? 140 : 80);
-            setSceneScale(isMobile ? 0.45 : 0.7);
+            setSceneScale(isMobile ? 0.6 : 0.7);
         };
         handleResize();
         window.addEventListener('resize', handleResize);
@@ -232,7 +232,7 @@ export default function Home() {
                             <span className="text-black/40 font-mono text-[10px] uppercase tracking-[0.6em] mb-4 drop-shadow-[0_2px_10px_rgba(0,0,0,0.05)]">Hi there, I&apos;m</span>
                             <h1 className="text-[12vw] md:text-[8vw] font-black tracking-[-0.05em] uppercase leading-[0.8] flex items-center gap-2 md:gap-4 drop-shadow-[0_10px_30px_rgba(0,0,0,0.1)] text-[#1a1a1a]">
                                 H
-                                <div className="w-[8vw] h-[8vw] md:w-[7vw] md:h-[7vw] relative mx-[-1vw]">
+                                <div className="w-[9vw] h-[9vw] md:w-[7vw] md:h-[7vw] relative mx-[-1vw]">
                                     <Scene scale={sceneScale} />
                                 </div>
                                 SEEB
