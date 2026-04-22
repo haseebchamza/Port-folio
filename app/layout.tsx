@@ -18,7 +18,7 @@ const fontCaveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "HSBLABS - Decoding Complexity Through Spatial Design",
+  title: "HSB LABS - Decoding Complexity Through Spatial Design",
   description: "A digital laboratory by Haseeb Hamza. Architecting intuitive product systems and visual logic. Moving beyond the grid to engineer the next generation of digital utility.",
   icons: {
     icon: "/HSBLAB_FAV.ico",

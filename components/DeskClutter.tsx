@@ -70,7 +70,7 @@ export default function DeskClutter() {
         initial={{ opacity: 0, rotate: -20, scale: 0.8 }}
         animate={{ opacity: 1, rotate: -15, scale: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
-        className="absolute top-[5%] md:top-[8%] left-[10%] md:left-[25%] w-40 h-40 md:w-72 md:h-72 opacity-80"
+        className="absolute top-[5%] md:top-[8%] left-[10%] md:left-[25%] w-24 h-24 md:w-72 md:h-72 opacity-80"
       >
         <img 
           src="/designer_glasses_topdown_1775801851005.png" 
